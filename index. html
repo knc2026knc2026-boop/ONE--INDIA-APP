@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102c55">
+<title>ONE INDIA APP</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f1f4f9;
+ color:#17243a;
+}
+header{
+ background:#102c55;
+ color:white;
+ padding:20px;
+ text-align:center;
+}
+header h1{margin:0;font-size:27px}
+header p{margin:7px 0 0}
+nav{
+ display:flex;
+ overflow-x:auto;
+ background:#173c70;
+}
+nav button{
+ color:white;
+ background:none;
+ border:0;
+ padding:14px;
+ white-space:nowrap;
+ font-size:14px;
+}
+.container{padding:15px}
+.search{
+ display:flex;
+ gap:7px;
+ margin-bottom:15px;
+}
+input{
+ flex:1;
+ padding:12px;
+ border:1px solid #bbb;
+ border-radius:8px;
+ font-size:15px;
+ min-width:0;
+}
+button{cursor:pointer}
+.action{
+ background:#1764b1;
+ color:white;
+ border:0;
+ padding:11px;
+ border-radius:7px;
+}
+.card{
+ background:white;
+ padding:16px;
+ margin-bottom:13px;
+ border-radius:12px;
+ box-shadow:0 2px 7px #0001;
+}
+.card h3{margin-top:0;color:#173c70}
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+.tile{
+ background:white;
+ padding:20px 8px;
+ text-align:center;
+ border-radius:12px;
+ box-shadow:0 2px 7px #0001;
+ font-weight:bold;
+}
+.tile span{display:block;font-size:27px;margin-bottom:8px}
+a{color:#1764b1}
+.history-item{
+ display:flex;
+ justify-content:space-between;
+ gap:8px;
+ padding:8px 0;
+ border-bottom:1px solid #eee;
+}
+footer{
+ text-align:center;
+ padding:20px;
+ color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🇮🇳 ONE INDIA</h1>
+<p>One Nation • One Information Platform</p>
+</header>
+
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('news')">News</button>
+<button onclick="show('education')">Education</button>
+<button onclick="show('economy')">Economy</button>
+<button onclick="show('radio')">Radio</button>
+<button onclick="show('tv')">TV</button>
+<button onclick="show('ott')">Free OTT</button>
+</nav>
+
+<div class="container">
+
+<section id="home">
+<div class="card">
+<h3>Welcome to ONE INDIA</h3>
+<p>இந்தியா முழுவதும் ஒரே செயலியில் தகவல்களைப் பெறுங்கள்.</p>
+<button class="action" onclick="show('news')">Latest News</button>
+</div>
+
+<div class="grid">
+<div class="tile" onclick="show('news')"><span>📰</span>News</div>
+<div class="tile" onclick="show('education')"><span>🎓</span>Education</div>
+<div class="tile" onclick="show('economy')"><span>📈</span>Economy</div>
+<div class="tile" onclick="show('radio')"><span>📻</span>Radio</div>
+<div class="tile" onclick="show('tv')"><span>📺</span>TV</div>
+<div class="tile" onclick="show('ott')"><span>🎬</span>Free OTT</div>
+</div>
+</section>
+
+<section id="news" hidden>
+<div class="card">
+<h3>📰 News Search</h3>
+<div class="search">
+<input id="query" placeholder="Search news...">
+<button class="action" onclick="searchNews()">Search</button>
+</div>
+<div id="results">
+<p>Choose a news source below.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>India News Sources</h3>
+<p><a href="https://www.thehindu.com/" target="_blank">The Hindu</a></p>
+<p><a href="https://www.bbc.com/news" target="_blank">BBC News</a></p>
+<p><a href="https://www.ndtv.com/" target="_blank">NDTV</a></p>
+<p><a href="https://www.dailythanthi.com/" target="_blank">Daily Thanthi</a></p>
+<p><a href="https://www.dinamalar.com/" target="_blank">Dinamalar</a></p>
+</div>
+
+<div class="card">
+<h3>Search History</h3>
+<div id="history"></div>
+<button class="action" onclick="clearHistory()">Clear Selected History</button>
+<button class="action" onclick="clearAll()">Clear All</button>
+</div>
+</section>
+
+<section id="education" hidden>
+<div class="card">
+<h3>🎓 Education & Exams</h3>
+<p><a href="https://exams.nta.ac.in/NEET/" target="_blank">NEET</a></p>
+<p><a href="https://upsc.gov.in/" target="_blank">UPSC</a></p>
+<p><a href="https://www.tnpsc.gov.in/" target="_blank">TNPSC</a></p>
+<p><a href="https://ncert.nic.in/" target="_blank">NCERT</a></p>
+</div>
+</section>
+
+<section id="economy" hidden>
+<div class="card">
+<h3>📈 Economy</h3>
+<p>Economic information and market resources.</p>
+<p><a href="https://www.rbi.org.in/" target="_blank">RBI</a></p>
+<p><a href="https://www.nseindia.com/" target="_blank">Stock Market - NSE</a></p>
+<p><a href="https://www.mcxindia.com/" target="_blank">Commodity Market - MCX</a></p>
+<p><a href="https://www.moneycontrol.com/" target="_blank">Moneycontrol</a></p>
+</div>
+</section>
+
+<section id="radio" hidden>
+<div class="card">
+<h3>📻 Radio</h3>
+<p><a href="https://prasarbharati.gov.in/" target="_blank">Prasar Bharati</a></p>
+<p><a href="https://www.newsonair.gov.in/" target="_blank">All India Radio News</a></p>
+</div>
+</section>
+
+<section id="tv" hidden>
+<div class="card">
+<h3>📺 Television</h3>
+<p><a href="https://www.youtube.com/@DDNews" target="_blank">DD News</a></p>
+<p><a href="https://www.youtube.com/@SansadTV" target="_blank">Sansad TV</a></p>
+</div>
+</section>
+
+<section id="ott" hidden>
+<div class="card">
+<h3>🎬 Free OTT & Video</h3>
+<p><a href="https://www.youtube.com/" target="_blank">YouTube</a></p>
+<p><a href="https://www.primevideo.com/" target="_blank">Prime Video</a></p>
+<p>கிடைக்கும் இலவச நிகழ்ச்சிகளை அந்தந்த தளங்களில் பார்க்கலாம்.</p>
+</div>
+</section>
+
+</div>
+
+<footer>
+ONE INDIA APP © 2026
+</footer>
+
+<script>
+function show(id){
+ document.querySelectorAll('.container section').forEach(s=>{
+ s.hidden=true;
+ });
+ document.getElementById(id).hidden=false;
+ if(id==='news') renderHistory();
+}
+
+function getHistory(){
+ return JSON.parse(localStorage.getItem('oneIndiaHistory')||'[]');
+}
+
+function searchNews(){
+ let q=document.getElementById('query').value.trim();
+ if(!q)return;
+
+ let h=getHistory();
+ h.unshift(q);
+ localStorage.setItem('oneIndiaHistory',JSON.stringify([...new Set(h)].slice(0,30)));
+
+ document.getElementById('results').innerHTML=
+ '<p>Search results for: <b>'+escapeHTML(q)+'</b></p>'+
+ '<p><a target="_blank" href="https://www.google.com/search?q='+encodeURIComponent(q+' India news')+'">Search India News</a></p>'+
+ '<p><a target="_blank" href="https://news.google.com/search?q='+encodeURIComponent(q)+'">Google News Results</a></p>';
+
+ renderHistory();
+}
+
+function escapeHTML(s){
+ return s.replace(/[&<>"']/g,c=>({
+ '&':'&amp;','<':'&lt;','>':'&gt;',
+ '"':'&quot;',"'":'&#39;'
+ }[c]));
+}
+
+function renderHistory(){
+ let h=getHistory();
+ document.getElementById('history').innerHTML=
+ h.length ? h.map((q,i)=>
+ '<div class="history-item">'+
+ '<label><input type="checkbox" class="hist" value="'+i+'">'+
+ escapeHTML(q)+'</label>'+
+ '</div>').join(''):'<p>No search history</p>';
+}
+
+function clearHistory(){
+ let h=getHistory();
+ let selected=[...document.querySelectorAll('.hist:checked')]
+ .map(x=>Number(x.value));
+ h=h.filter((q,i)=>!selected.includes(i));
+ localStorage.setItem('oneIndiaHistory',JSON.stringify(h));
+ renderHistory();
+}
+
+function clearAll(){
+ localStorage.removeItem('oneIndiaHistory');
+ renderHistory();
+}
+
+renderHistory();
+</script>
+
+</body>
+</html>
