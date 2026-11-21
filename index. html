@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#102c55">
+<meta name="theme-color" content="#176B3A">
 <title>ONE INDIA APP</title>
 
 <style>
@@ -12,11 +12,11 @@
 body{
  margin:0;
  font-family:Arial,sans-serif;
- background:#f1f4f9;
+ background:#F3F8F4;
  color:#17243a;
 }
 header{
- background:#102c55;
+ background:#176B3A;
  color:white;
  padding:20px;
  text-align:center;
@@ -26,8 +26,8 @@ header p{margin:7px 0 0}
 nav{
  display:flex;
  overflow-x:auto;
- background:#173c70;
-}
+ background:#14532D;
+
 nav button{
  color:white;
  background:none;
@@ -52,7 +52,7 @@ input{
 }
 button{cursor:pointer}
 .action{
- background:#1764b1;
+ background:#198;
  color:white;
  border:0;
  padding:11px;
@@ -65,7 +65,7 @@ button{cursor:pointer}
  border-radius:12px;
  box-shadow:0 2px 7px #0001;
 }
-.card h3{margin-top:0;color:#173c70}
+.card h3{margin-top:0;color:#14532D}
 .grid{
  display:grid;
  grid-template-columns:1fr 1fr;
@@ -80,7 +80,7 @@ button{cursor:pointer}
  font-weight:bold;
 }
 .tile span{display:block;font-size:27px;margin-bottom:8px}
-a{color:#1764b1}
+a{color:#198754}
 .history-item{
  display:flex;
  justify-content:space-between;
