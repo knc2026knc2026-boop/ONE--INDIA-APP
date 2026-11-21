@@ -91,7 +91,7 @@ a{color:#198754}
 footer{
  text-align:center;
  padding:20px;
- color:#777;
+ color:#666;
 }
 </style>
 </head>
