@@ -188,24 +188,35 @@ footer{
 </div>
 </section>
 
+
 <section id="tv" hidden>
   <div class="card">
     <h3>📺 ONE INDIA TV</h3>
-    <h4>தமிழ் தொலைக்காட்சி சேனல்கள்</h4>
-    <p><a href="https://www.youtube.com/@DDNews" target="_blank">DD News</a></p>
-    <p><a href="https://www.youtube.com/@sunTV" target="_blank">Sun TV</a></p>
-    <p><a href="https://www.youtube.com/@VijayTelevision" target="_blank">Vijay TV</a></p>
-    <p><a href="https://www.youtube.com/" target="_blank">Zee Tamil</a></p>
-    <p><a href="https://www.youtube.com/" target="_blank">Colors Tamil</a></p>
+    <input type="text" id="tvSearch"
+      placeholder="Search TV channels..."
+      oninput="filterTV()">
 
-    <h4>English TV Channels</h4>
-    <p><a href="https://www.youtube.com/@BBCNews" target="_blank">BBC News</a></p>
-    <p><a href="https://www.youtube.com/@CNN" target="_blank">CNN</a></p>
-    <p><a href="https://www.youtube.com/@IndiaToday" target="_blank">India Today</a></p>
-    <p><a href="https://www.youtube.com/@WION" target="_blank">WION</a></p>
-    <p><a href="https://www.youtube.com/@NDTV" target="_blank">NDTV</a></p>
+    <h4>தமிழ் சேனல்கள்</h4>
+    <div id="tamilChannels">
+      <p><a href="https://www.youtube.com/@sunTV" target="_blank">☀️ Sun TV</a></p>
+      <p><a href="https://www.youtube.com/@VijayTelevision" target="_blank">📺 Vijay TV</a></p>
+      <p><a href="https://www.youtube.com/" target="_blank">🎬 Zee Tamil</a></p>
+      <p><a href="https://www.youtube.com/" target="_blank">🌈 Colors Tamil</a></p>
+      <p><a href="https://www.youtube.com/" target="_blank">🎵 KTV</a></p>
+      <p><a href="https://www.youtube.com/" target="_blank">📡 Jaya TV</a></p>
+    </div>
+
+    <h4>English Channels</h4>
+    <div id="englishChannels">
+      <p><a href="https://www.youtube.com/@BBCNews" target="_blank">🌍 BBC News</a></p>
+      <p><a href="https://www.youtube.com/@CNN" target="_blank">🌐 CNN</a></p>
+      <p><a href="https://www.youtube.com/@IndiaToday" target="_blank">📰 India Today</a></p>
+      <p><a href="https://www.youtube.com/@WION" target="_blank">🌏 WION</a></p>
+      <p><a href="https://www.youtube.com/@NDTV" target="_blank">📺 NDTV</a></p>
+    </div>
   </div>
 </section>
+
 
 
 
@@ -285,6 +296,14 @@ function clearAll(){
 }
 
 renderHistory();
+ function filterTV(){
+  let q=document.getElementById('tvSearch').value.toLowerCase();
+
+  document.querySelectorAll('#tv a').forEach(link=>{
+    link.parentElement.style.display =
+      link.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
 </script>
 
 </body>
